@@ -1,0 +1,31 @@
+<form action="/filter" method="get">
+    <div><label>Weight:</label> <input name="minWeight" id="minWeight" type="text" value="0"> - <input name="maxWeight" id="maxWeight" type="text" value="255"> </div>
+    <div><label>Height:</label> <input name="minHeight" id="minHeight" type="text" value="0"> - <input name="maxHeight" id="maxHeight" type="text" value="255"> </div>
+    <div><label>HP:</label> <input name="minHp" id="minHp" type="text" value="0"> - <input name="maxHp" id="maxHp" type="text" value="255"> </div>
+    <div><label>Attack:</label> <input name="minAttack" id="minAttack" type="text" value="0"> - <input name="maxAttack" id="maxAttack" type="text" value="255"> </div>
+    <div><label>Defense:</label> <input name="minDefense" id="minDefense" type="text" value="0"> - <input name="maxDefense" id="maxDefense" type="text" value="255"> </div>
+    <div><label>Special Attack:</label> <input name="minSAttack" id="minSAttack" type="text" value="0"> - <input name="maxSAttack" id="maxSAttack" type="text" value="255"> </div>
+    <div><label>Special Defense:</label> <input name="minSDefense" id="minSDefense" type="text" value="0"> - <input name="maxSDefense" id="maxSDefense" type="text" value="255"> </div>
+    <div><label>Speed:</label> <input name="minSpeed" id="minSpeed" type="text" value="0"> - <input name="maxSpeed" id="maxSpeed" type="text" value="255"> </div>  
+    <div><label>Generation:</label> <select name="generation" id="generation" value="">
+<option value="">--All Generation--</option>
+<option value="1">1st generation</option>
+<option value="2">2rd generation</option>
+<option value="3">3nd generation</option>
+<option value="4">4th generation</option>
+<option value="5">5th generation</option>
+<option value="6">6th generation</option>
+<option value="7">7th generation</option>
+<option value="8">8th generation</option>
+<option value="9">9th generation</option>
+    </select></div>
+    <div><label>Type:</label>
+        <div>
+            <% pokemonTypes.forEach(  function(type){ %>
+                <input name="type" id="type<%=type%>" type="checkbox" value="<%=type.type%>">
+                <%=type.type[0].toUpperCase()%><%=type.type.slice(1)%>
+             <% }) %>
+        </div>
+    </div>
+    <div><input type="submit" value="Filter"></div>
+</form>
