@@ -14,7 +14,7 @@
 ```bash
 git clone https://github.com/klee616/comp4170-group-project.git
 ```
-- Install npm
+- Install dependent libraries
 ```bash
 npm install
 ```
