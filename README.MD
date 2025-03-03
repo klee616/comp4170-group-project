@@ -24,7 +24,7 @@ npm install
 
 - Run service
 ```bash
-npm install
+npm run dev
 ```
 
 Now We can access the project via http://localhost:3000/ 
