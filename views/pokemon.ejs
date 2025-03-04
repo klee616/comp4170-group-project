@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon <%=pokemon.name%>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%=pokemon.name%>
+    </h1>
+    <img style="width: 100px; height: 100px;"
+        src="images/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png" />
+
+        <h3>Weight:</h3>
+        <p><%=pokemon.weight%></p>
+        <h3>height:</h3>
+        <p><%=pokemon.height%></p>
+
+        <h3>hp:</h3>
+        <p><%=pokemon.hp%></p>
+        <h3>attack:</h3>
+        <p><%=pokemon.attack%></p>
+        <h3>defense:</h3>
+        <p><%=pokemon.defense%></p>
+        <h3>special attack:</h3>
+        <p><%=pokemon.s_attack%></p>
+        <h3>special defense:</h3>
+        <p><%=pokemon.s_defense%></p>
+        <h3>speed:</h3>
+        <p><%=pokemon.speed%></p>
+        <h3>evo set:</h3>
+        <p><%=pokemon.evo_set%></p>
+        <h3>type</h3>
+        <p><%=pokemon.type%></p>
+        <h3>info</h3>
+        <p><%=pokemon.info%></p>
+        <h3>generation</h3>
+        <p><%=pokemon.generation%></p>
+
+        <a href="/modify?id=<%=pokemon.id%>">Modify</a>
+
+</body>
+
+</html>

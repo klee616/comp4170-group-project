@@ -13,6 +13,9 @@ app.use(express.urlencoded({extended:true}))
 
 app.get('/', pokemon.homeView)
 app.get('/filter', pokemon.filterPokemon)
+app.get('/modify', pokemon.modifyPokemon)
+app.get('/pokemon', pokemon.pokemon)
+app.post('/updatePokemon', pokemon.updatePokemon)
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

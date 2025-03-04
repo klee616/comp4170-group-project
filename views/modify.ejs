@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Pokemon</title>
+</head>
+
+<body>
+    <form action="/updatePokemon" method="post">
+        <div>
+            <label>id</label>
+            <%=pokemon.id%><input type="hidden" name="id" value="<%=pokemon.id%>">
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" name="name" value="<%=pokemon.name%>">
+        </div>
+        <div>
+            <label>weight</label>
+            <input type="text" name="weight" value="<%=pokemon.weight%>">
+        </div>
+        <div>
+            <label>height</label>
+            <input type="text" name="height" value="<%=pokemon.height%>">
+        </div>
+        <div>
+            <label>hp</label>
+            <input type="text" name="hp" value="<%=pokemon.hp%>">
+        </div>
+        <div>
+            <label>attack</label>
+            <input type="text" name="attack" value="<%=pokemon.attack%>">
+        </div>
+        <div>
+            <label>defense</label>
+            <input type="text" name="defense" value="<%=pokemon.defense%>">
+        </div>
+        <div>
+            <label>Special Attack</label>
+            <input type="text" name="s_attack" value="<%=pokemon.s_attack%>">
+        </div>
+        <div>
+            <label>Special Defense</label>
+            <input type="text" name="s_defense" value="<%=pokemon.s_defense%>">
+        </div>
+        <div>
+            <label>speed</label>
+            <input type="text" name="speed" value="<%=pokemon.speed%>">
+        </div>
+        <div>
+            <label>evo_group</label>
+            <input type="text" name="evo_set" value="<%=pokemon.evo_set%>">
+        </div>
+        <div>
+            <label>info</label>
+            <input type="text" name="info" value="<%=pokemon.info%>">
+        </div>
+        <div>
+            <label>generation</label>
+            <input type="text" name="generation" value="<%=pokemon.generation%>">
+        </div>
+        <div>
+            <input type="submit" value="Modify" />
+        </div>
+    </form>
+</body>
+
+</html>
