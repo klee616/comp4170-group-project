@@ -38,10 +38,19 @@ import Pokemon from '../modules/Pokemon.js'
         res.render('pokemon', {pokemon:pokemon})
     }
 
+    // Game
+    const pokemonGame = async(req, res) => {
+        const pokemons = await Pokemon.getRandomPokemonList(req, res);
+        const answerpokemon = pokemons[ Math.floor(Math.random() * pokemons.length)];
+        res.render('game', {pokemons:pokemons, answerpokemon:answerpokemon})
+
+    }
+
     export default {
         homeView,
         filterPokemon,
         modifyPokemon,
         pokemon,
-        updatePokemon
+        updatePokemon,
+        pokemonGame
     }
