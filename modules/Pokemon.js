@@ -43,6 +43,7 @@ const filterPokemon = async (req) => {
     const client = await pool.connect();
     let result;
     try {
+        console.log(req.query.generation)
         const params = [
             parseFloat(req.query.minWeight) || 0, parseFloat(req.query.maxWeight) || Infinity,
             parseFloat(req.query.minHeight) || 0, parseFloat(req.query.maxHeight) || Infinity,
@@ -51,6 +52,7 @@ const filterPokemon = async (req) => {
             parseFloat(req.query.minDefense) || 0, parseFloat(req.query.maxDefense) || Infinity,
             parseFloat(req.query.minSAttack) || 0, parseFloat(req.query.maxSAttack) || Infinity,
             parseFloat(req.query.minSpeed) || 0, parseFloat(req.query.maxSpeed) || Infinity,
+            parseFloat(req.query.generation)
         ];
 
         // Handle the 'type' parameter
@@ -70,11 +72,11 @@ const filterPokemon = async (req) => {
             "  s_attack between $9 and $10 and " +
             "  s_defense between $11 and $12 and " +
             "  speed between $13 and $14 and " +
-            "  ($15 = '{}'::text[] OR type ?| $15::text[]) order by id",// and (type ?| $15::jsonb or $15 == '') and ($16 = '' or generation = $16)" ,
+            "  (generation = $15 or $15=0) and"+
+            "  ($16 = '{}'::text[] OR type ?| $16::text[]) order by id",// and (type ?| $15::jsonb or $15 == '') and ($16 = '' or generation = $16)" ,
             params
         );
 
-        console.log('test', result.rows[0])
     } catch (error) {
         console.error('Error Filter Pokemon:', error);
         throw error;
