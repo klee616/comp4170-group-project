@@ -52,7 +52,7 @@ const filterPokemon = async (req) => {
             parseFloat(req.query.minDefense) || 0, parseFloat(req.query.maxDefense) || Infinity,
             parseFloat(req.query.minSAttack) || 0, parseFloat(req.query.maxSAttack) || Infinity,
             parseFloat(req.query.minSpeed) || 0, parseFloat(req.query.maxSpeed) || Infinity,
-            parseFloat(req.query.generation)
+            parseFloat(req.query.generation) || 0
         ];
 
         // Handle the 'type' parameter
@@ -89,11 +89,14 @@ const filterPokemon = async (req) => {
 }
 
 // Get 4 random pokemon from database
-const getRandomPokemonList = async () => {
+const getRandomPokemonList = async (req, res) => {
     const client = await pool.connect();
     let result;
     try {
-        result = await client.query('select * from pokemon order by random() limit 4')
+        const params = [
+            parseFloat(req.query.generation) || 0
+        ]
+        result = await client.query('select * from pokemon  where (generation = $1 or $1 = 0) order by random() limit 4', params)
 
     } catch (error) {
         console.error('Error get Pokémon List:', error);
