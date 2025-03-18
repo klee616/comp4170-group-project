@@ -110,8 +110,9 @@ const insertPokemon = async (req, res) => {
     const client = await pool.connect();
     let result;
     try {
-        result = await client.query('insert into pokemon (name, weight, height, hp, attack, defense, s_sttack, s_defense, speed, type, evo_set, info, generation) values ($1, $2, $3, $4, $5, %6, $7, $8, $9, $10, $11, $12, $13)',
+        result = await client.query('insert into pokemon (id, name, weight, height, hp, attack, defense, s_attack, s_defense, speed, type, evo_set, info, generation) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)',
             [
+                req.body.id,
                 req.body.name,
                 req.body.weight,
                 req.body.height,
@@ -127,14 +128,13 @@ const insertPokemon = async (req, res) => {
                 req.body.generation
             ]
         )
-
-        return result.rows[0].id;
     } catch (error) {
         console.error('Error get insert Pokémon:', error);
         throw error;
     } finally {
         client.release()
     }
+    return result.rows;
 }
 
 
@@ -142,8 +142,11 @@ const updatePokemon = async (req, res) => {
 
     const client = await pool.connect();
     let result;
+    console.log(req)
+    let isScuess = false;
+
     try {
-        result = await client.query("update pokemon set name = $1, weight = $2, height = $3, hp = $4, attack=$5, defense=$6, s_attack=$7, s_defense=$8, speed=$9, type=$10, evo_set=$11, info=$12, generation=$13,modify_datetime=now() where id = $14",
+        result = await client.query("update pokemon set name = $1, weight = $2, height = $3, hp = $4, attack=$5, defense=$6, s_attack=$7, s_defense=$8, speed=$9, type=jsonb_strip_nulls($10::jsonb), evo_set=$11, info=$12, generation=$13,modify_datetime=now() where id = $14",
             [
                 req.body.name,
                 req.body.weight,
@@ -161,15 +164,15 @@ const updatePokemon = async (req, res) => {
                 req.body.id
             ]
         )
-
-        console.log(result);
+        isScuess = result.rowCount== 1
+        
     } catch (error) {
         console.error('Error get modify Pokémon:', error);
         throw error;
     } finally {
         client.release()
     }
-    return "";
+    return isScuess;
 }
 
 //return record from special pokemon
@@ -194,13 +197,12 @@ const getPokemonById = async (req, res) => {
 
 
 // delete pokemon
-const deletePokemon = async (req, res) => {
+const deletePokemon = async (id) => {
     const client = await pool.connect();
     let result;
-    console.log(req.body)
     try {
         result = await client.query("delete from pokemon where id = $1", [
-            req.body.id
+            id
         ])
         console.log(result)
         if(result.rowCount > 0) {
@@ -216,6 +218,38 @@ const deletePokemon = async (req, res) => {
     }
 }
 
+const getCurrentSeqNumber = async ( ) => {
+    
+    const client = await pool.connect();
+    let result;
+    try {
+        result = await client.query("SELECT currval(pg_get_serial_sequence('pokemon', 'id')) as currval",)
+        
+    } catch (error) {
+        console.error('Error get modify Pokémon:', error);
+        throw error;
+    } finally {
+        client.release()
+    }
+    return result.rows[0].currval;
+}
+
+const getNextSeqNumber = async () => {
+    const client = await pool.connect();
+    let result;
+    try {
+        result = await client.query("select nextval('pokemon_2_id_seq')")
+    } catch (error) {
+        console.error('Error get modify Pokémon:', error);
+        throw error;
+    } finally {
+        client.release()
+    }
+    console.log(result)
+    console.log(result.rows[0].nextval)
+    return result.rows[0].nextval;
+}
+
 export default {
     getPokemonList,
     getPokemonTypes,
@@ -225,5 +259,7 @@ export default {
     updatePokemon,
     getRandomPokemonList,
     getPokemonById,
-    deletePokemon
+    deletePokemon,
+    getCurrentSeqNumber,
+    getNextSeqNumber
 }

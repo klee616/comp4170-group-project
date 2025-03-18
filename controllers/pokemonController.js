@@ -1,5 +1,5 @@
 import Pokemon from '../modules/Pokemon.js'
-
+import Utils from '../utility/Utils.js';
 
 const homeView = async (req, res) => {
     const pokemons = await Pokemon.getPokemonList();
@@ -16,20 +16,44 @@ const filterPokemon = async (req, res) => {
 
 //update pokemon
 const updatePokemon = async (req, res) => {
-    await Pokemon.updatePokemon(req);
-    res.redirect(`/pokemon?id=${req.body.id}`);
+
+    req.body = {
+        ...req.body,
+        type: JSON.stringify(Utils.cleanJson(req.body.type))
+    }
+
+    let result;
+    let id;
+    if (req.body.id == undefined) {
+
+        req.body = {
+            ...req.body,
+            id: await Pokemon.getNextSeqNumber()
+        }
+        result = await Pokemon.insertPokemon(req);
+    } else {
+        result = await Pokemon.updatePokemon(req);
+    }
+    id = req.body.id;
+    res.redirect(`/pokemon?id=${id}`);
 }
 
 //create pokemon
 const insertPokemon = async (req, res) => {
-    await Pokemon.insertPokemon(req);
-    res.redirect("/");
+    req.body = {
+        ...req.body,
+        type: JSON.stringify(Utils.cleanJson(req.body.type))
+    }
+    console.log(req)
+    const result = await Pokemon.insertPokemon(req);
+    res.redirect(`/pokemon?id=${result[0].id}`);
 }
 
 //get information for modify page
 const modifyPokemon = async (req, res) => {
     const pokemon = await Pokemon.getPokemonById(req);
-    res.render('modify', { pokemon: pokemon })
+    const pokemonTypes = await Pokemon.getPokemonTypes();
+    res.render('modify', { pokemon: pokemon, pokemonTypes: pokemonTypes })
 }
 
 //get information for View page
@@ -40,6 +64,7 @@ const pokemon = async (req, res) => {
 
 // Game
 const pokemonGame = async (req, res) => {
+
     const pokemons = await Pokemon.getRandomPokemonList(req, res);
     const answerpokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
     res.render('game', { pokemons: pokemons, answerpokemon: answerpokemon })
@@ -47,14 +72,21 @@ const pokemonGame = async (req, res) => {
 
 // Delete
 const deletePokemon = async (req, res) => {
-    const pokemon = await Pokemon.deletePokemon(req, res);
+    const id = req.params.id
+    const pokemon = await Pokemon.deletePokemon(id);
     console.log(deletePokemon)
     if (pokemon) {
-        res.end(JSON.stringify({ status: "success", message: `Successful deleted the pokemon no. ${req.query.id}` }))
+        res.end(JSON.stringify({ status: "Success", message: `Successful deleted the pokemon no. ${id}` }))
     } else {
-        res.end(JSON.stringify({ status: "Fail", message: `Fail. The pokemon no. ${req.query.id} not found` }));
+        res.end(JSON.stringify({ status: "Fail", message: `Fail. The pokemon no. ${id} not found` }));
     }
     // Go back to index?
+}
+
+// Create
+const createPokemon = async (req, res) => {
+    const pokemonTypes = await Pokemon.getPokemonTypes();
+    res.render('create', { pokemonTypes: pokemonTypes })
 }
 
 export default {
@@ -62,7 +94,9 @@ export default {
     filterPokemon,
     modifyPokemon,
     pokemon,
+    insertPokemon,
     updatePokemon,
     pokemonGame,
-    deletePokemon
+    deletePokemon,
+    createPokemon
 }

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="/updatePokemon" method="post">
+    <form action="/updatePokemon" method="post" id="pokemonForm">
         <div>
             <label>id</label>
             <%=pokemon.id%><input type="hidden" name="id" value="<%=pokemon.id%>">
@@ -50,6 +50,31 @@
             <input type="text" name="speed" value="<%=pokemon.speed%>">
         </div>
         <div>
+            <label>Type 1</label>
+            <select name="type">
+                <option value="">Null</option>
+                <% pokemonTypes.forEach( function(type){ %>
+                    <option value="<%=type.type%>" <%=type.type==pokemon.type[0]?"selected":"" %> >
+                        <%=type.type %>
+                    </option>
+                    <% }) %>
+            </select>
+
+            (<%=pokemon.type[0]%>)
+        </div>
+        <div>
+            <label>Type 2</label>
+            <select name="type">
+                <option value="">Null</option>
+                <% pokemonTypes.forEach( function(type){ %>
+                    <option value="<%=type.type %>" <%=type.type==pokemon.type[1]?"selected":"" %>>
+                        <%=type.type %>
+                    </option>
+                    <% }) %>
+            </select>
+            (<%=pokemon.type[1]%>)
+        </div>
+        <div>
             <label>evo_group</label>
             <input type="text" name="evo_set" value="<%=pokemon.evo_set%>">
         </div>
@@ -63,8 +88,40 @@
         </div>
         <div>
             <input type="submit" value="Modify" />
+            <input type="button" value="Delete" id="deleteBtn" />
         </div>
     </form>
+
+    <script>
+        document.getElementById("deleteBtn").addEventListener("click", async function () {
+            const pokemonId = "<%= pokemon.id %>"; // Get the Pokémon ID
+
+            if (!confirm(`Are you sure you want to delete Pokémon <%=pokemon.name%> (ID ${pokemonId})?`)) {
+                return; // Stop if user cancels
+            }
+
+            try {
+                const response = await fetch(`/api/pokemon/${pokemonId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (response.ok) {
+                    alert("Pokémon deleted successfully!");
+                    window.location.href = "/"; // Redirect after deletion
+                } else {
+                    const errorMessage = await response.text();
+                    alert(`Failed to delete: ${errorMessage}`);
+                }
+            } catch (error) {
+                console.error("Error deleting Pokémon:", error);
+                alert("Error deleting Pokémon. Check console for details.");
+            }
+        });
+    </script>
+
 </body>
 
 </html>
