@@ -22,7 +22,8 @@ app.get('/pokemon', pokemon.pokemon)
 app.post('/updatePokemon', pokemon.updatePokemon)
 // Min Game, only support generation filter.
 app.get('/game', pokemon.pokemonGame)
-
+//Deleted pokemon
+app.delete('/pokemon', pokemon.deletePokemon)
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

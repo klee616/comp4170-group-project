@@ -72,7 +72,7 @@ const filterPokemon = async (req) => {
             "  s_attack between $9 and $10 and " +
             "  s_defense between $11 and $12 and " +
             "  speed between $13 and $14 and " +
-            "  (generation = $15 or $15=0) and"+
+            "  (generation = $15 or $15=0) and" +
             "  ($16 = '{}'::text[] OR type ?| $16::text[]) order by id",// and (type ?| $15::jsonb or $15 == '') and ($16 = '' or generation = $16)" ,
             params
         );
@@ -127,14 +127,16 @@ const insertPokemon = async (req, res) => {
                 req.body.generation
             ]
         )
+
+        return result.rows[0].id;
     } catch (error) {
         console.error('Error get insert Pokémon:', error);
         throw error;
     } finally {
         client.release()
     }
-    return "";
 }
+
 
 const updatePokemon = async (req, res) => {
 
@@ -190,6 +192,30 @@ const getPokemonById = async (req, res) => {
 
 }
 
+
+// delete pokemon
+const deletePokemon = async (req, res) => {
+    const client = await pool.connect();
+    let result;
+    console.log(req.body)
+    try {
+        result = await client.query("delete from pokemon where id = $1", [
+            req.body.id
+        ])
+        console.log(result)
+        if(result.rowCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        console.error('Error get modify Pokémon:', error);
+        throw error;
+    } finally {
+        client.release()
+    }
+}
+
 export default {
     getPokemonList,
     getPokemonTypes,
@@ -198,5 +224,6 @@ export default {
     insertPokemon,
     updatePokemon,
     getRandomPokemonList,
-    getPokemonById
+    getPokemonById,
+    deletePokemon
 }

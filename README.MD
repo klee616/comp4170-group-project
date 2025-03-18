@@ -14,13 +14,15 @@
 ```bash
 git clone https://github.com/klee616/comp4170-group-project.git
 ```
+
+- Setup .env.local file
+    - clone .env.sample to .env.local
+    - edit the PostgreSQL connection
+
 - Install dependent libraries
 ```bash
 npm install
 ```
-- Setup .env.local file
-    - Copy .env.sample to .env.local
-    - edit the PostgreSQL connection
 
 - Run application
 ```bash
