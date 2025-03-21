@@ -1,0 +1,53 @@
+<form action="/filter" method="get" class="filter-form">
+
+        
+    <div><label>Weight:</label> <input name="minWeight" id="minWeight" type="text"
+            value="<%=query.minWeight==undefined?0:query.minWeight%>"> - <input name="maxWeight" id="maxWeight"
+            type="text" value="<%=query.maxWeight==undefined?255:query.maxWeight%>"> </div>
+    <div><label>Height:</label> <input name="minHeight" id="minHeight" type="text"
+            value="<%=query.minHeight==undefined?0:query.minHeight%>"> - <input name="maxHeight" id="maxHeight"
+            type="text" value="<%=query.maxHeight==undefined?255:query.maxHeight%>">> </div>
+    <div><label>HP:</label> <input name="minHp" id="minHp" type="text"
+            value="<%=query.minHp==undefined?0:query.minHp%>"> - <input name="maxHp" id="maxHp" type="text"
+            value="<%=query.maxHp==undefined?255:query.maxHp%>">> </div>
+    <div><label>Attack:</label> <input name="minAttack" id="minAttack" type="text"
+            value="<%=query.minAttack==undefined?0:query.minAttack%>"> - <input name="maxAttack" id="maxAttack"
+            type="text" value="<%=query.maxAttack==undefined?255:query.maxAttack%>">> </div>
+    <div><label>Defense:</label> <input name="minDefense" id="minDefense" type="text"
+            value="<%=query.minDefense==undefined?0:query.minDefense%>"> - <input name="maxDefense" id="maxDefense"
+            type="text" value="<%=query.maxDefense==undefined?255:query.maxDefense%>">> </div>
+    <div><label>Special Attack:</label> <input name="minSAttack" id="minSAttack" type="text"
+            value="<%=query.minSAttack==undefined?0:query.minSAttack%>"> - <input name="maxSAttack" id="maxSAttack"
+            type="text" value="<%=query.maxSAttack==undefined?255:query.maxSAttack%>">> </div>
+    <div><label>Special Defense:</label> <input name="minSDefense" id="minSDefense" type="text"
+            value="<%=query.minSDefense==undefined?0:query.minSDefense%>"> - <input name="maxSDefense" id="maxSDefense"
+            type="text" value="<%=query.maxSDefense==undefined?255:query.maxSDefense%>">> </div>
+    <div><label>Speed:</label> <input name="minSpeed" id="minSpeed" type="text"
+            value="<%=query.minSpeed==undefined?0:query.minSpeed%>"> - <input name="maxSpeed" id="maxSpeed" type="text"
+            value="<%=query.maxSpeed==undefined?255:query.maxSpeed%>">> </div>
+    <div><label>Generation:</label> <select name="generation" id="generation">
+            <option value="0" <%=query.generation==undefined||query.generation==0?"selected":""%>>--All Generation--
+            </option>
+            <option value="1" <%=query.generation=="1" ?"selected":""%>>1st generation</option>
+            <option value="2" <%=query.generation=="2" ?"selected":""%>>2rd generation</option>
+            <option value="3" <%=query.generation=="3" ?"selected":""%>>3nd generation</option>
+            <option value="4" <%=query.generation=="4" ?"selected":""%>>4th generation</option>
+            <option value="5" <%=query.generation=="5" ?"selected":""%>>5th generation</option>
+            <option value="6" <%=query.generation=="6" ?"selected":""%>>6th generation</option>
+            <option value="7" <%=query.generation=="7" ?"selected":""%>>7th generation</option>
+            <option value="8" <%=query.generation=="8" ?"selected":""%>>8th generation</option>
+            <option value="9" <%=query.generation=="9" ?"selected":""%>>9th generation</option>
+        </select></div>
+    <div><label>Type:</label>
+        <div>
+            <% pokemonTypes.forEach( function(type){ %>
+                <input name="type" id="type<%=type%>" type="checkbox" value="<%=type.type%>"  <%=query.type!=undefined&&query.type.includes(type.type)?"checked":""%>>
+                <%=type.type[0].toUpperCase()%><%=type.type.slice(1)%>
+              
+                        <% }) %>
+        </div>
+    </div>
+    <div><input type="submit" value="Filter"></div>
+</form>
+
+<a class="createPoke" href="/createPokemon" style="display:block; bottomtext-align:center; margin-top:20px;">Create Pokemon</a>

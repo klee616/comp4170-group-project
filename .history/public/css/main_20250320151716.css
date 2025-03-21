@@ -1,0 +1,12 @@
+body{
+background: black;
+}
+
+.pokemon-card{
+
+}
+
+.pokemon-list{
+display:flex;
+flex-wrap:wrap;
+}

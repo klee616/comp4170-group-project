@@ -1,0 +1,25 @@
+body{
+background: black;
+}
+
+.pokemon-card{
+border: 1px solid red;
+width: 7.5vw;
+aspect-ratio: 1/1;
+}
+
+.pokemon-card img{
+    
+}
+
+.pokemon-list{
+display:flex;
+flex-wrap:wrap;
+gap: 2.5vw;
+
+}
+
+.pokemon-card-body{
+display:none;
+
+}
