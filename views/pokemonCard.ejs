@@ -1,11 +1,10 @@
 <a href="/pokemon?id=<%= pokemon.id %>">
-    <div class="pokemon-card">
-        <img style="width: 100px; height: 100px; object-fit: contain;"
+    <div class="pokemon-card" style="flex: 1 1 auto; max-width: 300px;">
+        <img style=" width:300px; height: 300px; object-fit: scale-down;"
             src="images/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png" />
-        <div>
-            <%= pokemon.name.toUpperCase()%>
-            <p>/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png</p>
-                <%= pokemon.name.slice(1) %>
+        <div style="width: 100%; text-align: center;">
+            <!-- <p>/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png</p> -->
+           <p> <%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %></p>
         </div>
     </div>
 </a>

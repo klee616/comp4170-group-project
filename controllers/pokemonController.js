@@ -1,4 +1,4 @@
-import Pokemon from '../modules/Pokemon.js'
+import Pokemon from '../model/Pokemon.js'
 import Utils from '../utility/Utils.js';
 
 const homeView = async (req, res) => {
