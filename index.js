@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended:true}))
 
 //Index, list all pokemon
 app.get('/', pokemon.homeView)
+app.get('/testingNew',pokemon.newPage)
 //Filter pokemon
 app.get('/filter', pokemon.filterPokemon)
 //Modify Pokemon, do not support alter pokemon type 

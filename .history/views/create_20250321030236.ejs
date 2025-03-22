@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Pokemon</title>
+</head>
+
+<body style="background-color: #f5f5dc;">
+    <form action="/updatePokemon" method="post">
+        <div>
+            <label>id</label>
+            -
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" name="name" value="">
+        </div>
+        <div>
+            <label>weight</label>
+            <input type="text" name="weight" value="">
+        </div>
+        <div>
+            <label>height</label>
+            <input type="text" name="height" value="">
+        </div>
+        <div>
+            <label>hp</label>
+            <input type="text" name="hp" value="">
+        </div>
+        <div>
+            <label>attack</label>
+            <input type="text" name="attack" value="">
+        </div>
+        <div>
+            <label>defense</label>
+            <input type="text" name="defense" value="">
+        </div>
+        <div>
+            <label>Special Attack</label>
+            <input type="text" name="s_attack" value="">
+        </div>
+        <div>
+            <label>Special Defense</label>
+            <input type="text" name="s_defense" value="">
+        </div>
+        <div>
+            <label>speed</label>
+            <input type="text" name="speed" value="">
+        </div>
+        <div>
+            <label>Type 1</label>
+            <select name="type">
+                <option value="">Null</option>
+                <% pokemonTypes.forEach( function(type){ %>
+                    <option value="<%=type.type%>">
+                        <%=type.type %>
+                    </option>
+                    <% }) %>
+            </select>
+
+        </div>
+        <div>
+            <label>Type 2</label>
+            <select name="type">
+                <option value="">Null</option>
+                <% pokemonTypes.forEach( function(type){ %>
+                    <option value="<%=type.type %>">
+                        <%=type.type %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <div>
+            <label>evo_group</label>
+            <input type="text" name="evo_set" value="">
+        </div>
+        <div>
+            <label>info</label>
+            <input type="text" name="info" value="">
+        </div>
+        <div>
+            <label>generation [number 1 - 9]</label>
+            <input type="text" name="generation" value="">
+        </div>
+        <div>
+            <input type="submit" value="Modify" />
+        </div>
+    </form>
+</body>
+
+</html>

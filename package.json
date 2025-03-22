@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --env-file=.env.local index.js"
+    "dev": "nodemon --env-file=.env.local index.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +15,8 @@
     "express": "^4.21.2",
     "method-override": "^3.0.0",
     "pg": "^8.13.3",
-    "pg-pool": "^3.7.1"
+    "pg-pool": "^3.7.1",
+    "pokemon": "file:"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

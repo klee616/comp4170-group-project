@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon List</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
     <img src="/images/imgbin_pokemon-logo.png" class="logo" />
     <h1>Pokemon Search </h1>
-
     <%- include('pokemonFilterForm.ejs', {pokemonTypes:pokemonTypes})%>
-    <div class="container">
+    <div class="container pokemon-list">
+        
         <% pokemons.forEach(  function(pokemon){ %>
 
            <%- include('pokemonCard.ejs', {pokemon:pokemon})%>

@@ -1,0 +1,14 @@
+body{
+background: black;
+}
+
+.pokemon-card{
+border: 1px solid red;
+}
+
+.pokemon-list{
+display:flex;
+flex-wrap:wrap;
+gap: 2.5rem;
+
+}

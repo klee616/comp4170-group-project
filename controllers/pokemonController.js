@@ -18,6 +18,12 @@ const homeView = async (req, res) => {
     }
 }
 
+const newPage = async (req, res) => {
+    console.log('here')
+    // const pokemons = await Pokemon.getPokemonList();
+    // const pokemonTypes = await Pokemon.getPokemonTypes();
+    res.render('newPage');
+}
 const filterPokemon = async (req, res) => {
     try {
         const pokemons = await Pokemon.filterPokemon(req);
@@ -129,6 +135,7 @@ const createPokemon = async (req, res) => {
 
 export default {
     homeView,
+    newPage,
     filterPokemon,
     modifyPokemon,
     pokemon,

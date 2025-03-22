@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    link rel="stylesheet" href="style.css"
+    <title>CSS Testing</title>
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            align-content: center;
+        }
+
+        .pokemon-card {
+            width: 600px;
+            height: 600px;
+            background-color: #62BFED;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+
+        .guess-image {
+            -webkit-filter: grayscale(100%);
+            -webkit-filter: contrast(0%);
+            -webkit-filter: brightness(0%);
+        }
+
+        .guess-image:hover {
+            -webkit-filter: grayscale(0%);
+            -webkit-filter: contrast(100%);
+            -webkit-filter: brightness(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="pokemon-card">
+            <img src="./PokemonImagesDB/Electabuzz/Electabuzz_new.png" class="guess-image" />
+            <p>????</p>
+            <p>Who am I?</p>
+        </div>
+        <div class="answer">
+            <div> A. Pikachu</div>
+            <div> B. Capsakid</div>
+            <div> C. Spheal</div>
+            <div> D. Electabuzz</div>
+        </div>
+    </div>
+</body>
+
+</html>
