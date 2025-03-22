@@ -12,14 +12,7 @@
 <body>
     <%- include('pokemonListHeader.ejs')%>
     <%- include('pokemonFilterForm.ejs', {pokemonTypes:pokemonTypes})%>
-    <div class="container pokemon-list">
-        
-    <div class="container" style="    display: flex;
-    gap:1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        align-content: center;">
+    <div class="container">
         <% pokemons.forEach(  function(pokemon){ %>
 
            <%- include('pokemonCard.ejs', {pokemon:pokemon})%>

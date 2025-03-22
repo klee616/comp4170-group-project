@@ -1,23 +1,24 @@
 import pg from "pg"
 import Pool from "pg-pool"
 const { Client } = pg;
-const pool = new Pool({ ssl: true });
+const pool = new Pool({
+    ssl: {
+        rejectUnauthorized: false, // Consider setting to true for production with a verified certificate
+    },
+});
 
 //fetch all Pokemon;
 const getPokemonList = async (req, res) => {
-
     const client = await pool.connect();
-    let result;
     try {
-        result = await client.query('select * from pokemon order by id  ')
-
+        const result = await client.query('select * from pokemon order by id  ')
+        return result.rows;
     } catch (error) {
         console.error('Error get Pokémon List:', error);
         throw error;
     } finally {
         client.release()
     }
-    return result.rows;
 }
 
 // Get all pokemon types
@@ -204,12 +205,7 @@ const deletePokemon = async (id) => {
         result = await client.query("delete from pokemon where id = $1", [
             id
         ])
-        console.log(result)
-        if(result.rowCount > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return result.rowCount > 0;
     } catch (error) {
         console.error('Error get modify Pokémon:', error);
         throw error;
@@ -257,7 +253,6 @@ export default {
     getRandomPokemonList,
     insertPokemon,
     updatePokemon,
-    getRandomPokemonList,
     getPokemonById,
     deletePokemon,
     getCurrentSeqNumber,
