@@ -5,90 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modify Pokemon</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
+    <img src="/images/imgbin_pokemon-logo.png" class="logo" />
     <form action="/updatePokemon" method="post" id="pokemonForm">
-        <div>
-            <label>id</label>
-            <%=pokemon.id%><input type="hidden" name="id" value="<%=pokemon.id%>">
-        </div>
-        <div>
-            <label>name</label>
-            <input type="text" name="name" value="<%=pokemon.name%>">
-        </div>
-        <div>
-            <label>weight</label>
-            <input type="text" name="weight" value="<%=pokemon.weight%>">
-        </div>
-        <div>
-            <label>height</label>
-            <input type="text" name="height" value="<%=pokemon.height%>">
-        </div>
-        <div>
-            <label>hp</label>
-            <input type="text" name="hp" value="<%=pokemon.hp%>">
-        </div>
-        <div>
-            <label>attack</label>
-            <input type="text" name="attack" value="<%=pokemon.attack%>">
-        </div>
-        <div>
-            <label>defense</label>
-            <input type="text" name="defense" value="<%=pokemon.defense%>">
-        </div>
-        <div>
-            <label>Special Attack</label>
-            <input type="text" name="s_attack" value="<%=pokemon.s_attack%>">
-        </div>
-        <div>
-            <label>Special Defense</label>
-            <input type="text" name="s_defense" value="<%=pokemon.s_defense%>">
-        </div>
-        <div>
-            <label>speed</label>
-            <input type="text" name="speed" value="<%=pokemon.speed%>">
-        </div>
-        <div>
-            <label>Type 1</label>
-            <select name="type">
-                <option value="">Null</option>
-                <% pokemonTypes.forEach( function(type){ %>
-                    <option value="<%=type.type%>" <%=type.type==pokemon.type[0]?"selected":"" %> >
-                        <%=type.type %>
-                    </option>
-                    <% }) %>
-            </select>
+        <input type="hidden" name="id" value="<%=pokemon.id%>">
+        <div class="pokemon-contrainer">
+            <div class="pokemon-card2">
+                <img
+                    src="images/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png" />
 
-            (<%=pokemon.type[0]%>)
-        </div>
-        <div>
-            <label>Type 2</label>
-            <select name="type">
-                <option value="">Null</option>
-                <% pokemonTypes.forEach( function(type){ %>
-                    <option value="<%=type.type %>" <%=type.type==pokemon.type[1]?"selected":"" %>>
-                        <%=type.type %>
-                    </option>
-                    <% }) %>
-            </select>
-            (<%=pokemon.type[1]%>)
-        </div>
-        <div>
-            <label>evo_group</label>
-            <input type="text" name="evo_set" value="<%=pokemon.evo_set%>">
-        </div>
-        <div>
-            <label>info</label>
-            <input type="text" name="info" value="<%=pokemon.info%>">
-        </div>
-        <div>
-            <label>generation</label>
-            <input type="text" name="generation" value="<%=pokemon.generation%>">
-        </div>
-        <div>
-            <input type="submit" value="Modify" />
-            <input type="button" value="Delete" id="deleteBtn" />
+                <div style=" width: 80%; display: block; margin: 3rem auto 1rem; "><input type="text" name="name"
+                        value="<%=pokemon.name%>"></div>
+
+                <div style="    width: 80%;    display: block;    margin: 1rem auto 1rem;"> <label
+                        style="    text-align: left;    left: 0;    left: 0px;    margin: 0px;"> Description: </label>
+                    <br>
+                    <textarea name="info" style="width: 80%; height: 6rem;"><%=pokemon.info%></textarea>
+                </div>
+            </div>
+            <div class="pokemon-detail">
+                <div>
+                    <h3>Weight:</h3>
+                    <p>
+
+                        <input type="number" name="weight" value="<%=pokemon.weight%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Height:</h3>
+                    <p>
+                        <input type="number" name="height" value="<%=pokemon.height%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>HP:</h3>
+                    <p>
+                        <input type="number" name="hp" value="<%=pokemon.hp%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Attack:</h3>
+                    <p>
+                        <input type="number" name="attack" value="<%=pokemon.attack%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Defense:</h3>
+                    <p>
+                        <input type="number" name="defense" value="<%=pokemon.defense%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Special attack:</h3>
+                    <p>
+                        <input type="number" name="s_attack" value="<%=pokemon.s_attack%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Special defense:</h3>
+                    <p>
+                        <input type="number" name="s_defense" value="<%=pokemon.s_defense%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Speed:</h3>
+                    <p>
+                        <input type="number" name="speed" value="<%=pokemon.speed%>" min="0" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Evo set:</h3>
+                    <p>
+                        <input type="number" name="evo_set" value="<%=pokemon.evo_set%>" min="0" max="999">
+                    </p>
+                </div>
+                <div>
+                    <h3>Type</h3>
+                    <select name="type">
+                        <option value="">Null</option>
+                        <% pokemonTypes.forEach( function(type){ %>
+                            <option value="<%=type.type%>" <%=type.type==pokemon.type[0]?"selected":"" %> >
+                                <%=type.type %>
+                            </option>
+                            <% }) %>
+                    </select>
+
+
+                    <select name="type">
+                        <option value="">Null</option>
+                        <% pokemonTypes.forEach( function(type){ %>
+                            <option value="<%=type.type %>" <%=type.type==pokemon.type[1]?"selected":"" %>>
+                                <%=type.type %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <h3>Generation</h3>
+                    <p>
+                        <input type="number" name="generation" value="<%=pokemon.generation%>" min="1" max="99">
+                    </p>
+
+                </div>
+                <div>
+                    <input type="submit" value="Modify" />
+                    <input type="button" value="Delete" id="deleteBtn" />
+                </div>
+            </div>
+
         </div>
     </form>
 

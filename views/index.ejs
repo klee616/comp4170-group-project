@@ -9,14 +9,11 @@
 </head>
 
 <body>
+    <img src="/images/imgbin_pokemon-logo.png" class="logo" />
+    <h1>Pokemon Search </h1>
 
     <%- include('pokemonFilterForm.ejs', {pokemonTypes:pokemonTypes})%>
-    <div class="container" style="    display: flex;
-    gap:1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        align-content: center;">
+    <div class="container">
         <% pokemons.forEach(  function(pokemon){ %>
 
            <%- include('pokemonCard.ejs', {pokemon:pokemon})%>

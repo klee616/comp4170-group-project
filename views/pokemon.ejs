@@ -4,44 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon <%=pokemon.name%>
-    </title>
+    <title>Pokemon <%=pokemon.name%></title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
-    <h1>
-        <%=pokemon.name%>
-    </h1>
-    <img style="width: 100px; height: 100px;"
-        src="images/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png" />
+    <img src="/images/imgbin_pokemon-logo.png" class="logo" />
 
-        <h3>Weight:</h3>
-        <p><%=pokemon.weight%></p>
-        <h3>height:</h3>
-        <p><%=pokemon.height%></p>
+    <div class="pokemon-contrainer">
+        <div class="pokemon-card2">
+            <img
+                src="images/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png" />
+            <h1>
+                <%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>
+            </h1>
 
-        <h3>hp:</h3>
-        <p><%=pokemon.hp%></p>
-        <h3>attack:</h3>
-        <p><%=pokemon.attack%></p>
-        <h3>defense:</h3>
-        <p><%=pokemon.defense%></p>
-        <h3>special attack:</h3>
-        <p><%=pokemon.s_attack%></p>
-        <h3>special defense:</h3>
-        <p><%=pokemon.s_defense%></p>
-        <h3>speed:</h3>
-        <p><%=pokemon.speed%></p>
-        <h3>evo set:</h3>
-        <p><%=pokemon.evo_set%></p>
-        <h3>type</h3>
-        <p><%=pokemon.type%></p>
-        <h3>info</h3>
-        <p><%=pokemon.info%></p>
-        <h3>generation</h3>
-        <p><%=pokemon.generation%></p>
+            <p>
+                <%=pokemon.info%>
+            </p>
 
-        <a href="/modify?id=<%=pokemon.id%>">Modify</a>
+        </div>
+        <div class="pokemon-detail">
+            <div>
+                <h3>Weight:</h3>
+                <p>
+                    <%=pokemon.weight%>
+                </p>
+            </div>
+            <div>
+                <h3>Height:</h3>
+                <p>
+                    <%=pokemon.height%>
+                </p>
+            </div>
+            <div>
+                <h3>HP:</h3>
+                <p>
+                    <%=pokemon.hp%>
+                </p>
+            </div>
+            <div>
+                <h3>Attack:</h3>
+                <p>
+                    <%=pokemon.attack%>
+                </p>
+            </div>
+            <div>
+                <h3>Defense:</h3>
+                <p>
+                    <%=pokemon.defense%>
+                </p>
+            </div>
+            <div>
+                <h3>Special attack:</h3>
+                <p>
+                    <%=pokemon.s_attack%>
+                </p>
+            </div>
+            <div>
+                <h3>Special defense:</h3>
+                <p>
+                    <%=pokemon.s_defense%>
+                </p>
+            </div>
+            <div>
+                <h3>Speed:</h3>
+                <p>
+                    <%=pokemon.speed%>
+                </p>
+            </div>
+            <div>
+                <h3>Evo set:</h3>
+                <p>
+                    <%=pokemon.evo_set%>
+                </p>
+            </div>
+            <div>
+                <h3>Type</h3>
+                <p>
+                    <%=pokemon.type%>
+                </p>
+            </div>
+            <div>
+                <h3>Generation</h3>
+                <p>
+                    <%=pokemon.generation%>
+                </p>
+
+            </div>
+            <div>
+                <a href="/modify?id=<%=pokemon.id%>">Modify</a>
+                <a href="/">Back</a>
+            </div>
+
+            <!-- <div>
+                <label>HP:</label>
+                <div class="ability-bar">
+                    <div  class="ability-value" style="background:red;width: calc( <%=pokemon.hp%>  / 255 * 100%);height: 100%;border-radius: 5px;"></div>  <%=pokemon.hp%>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
 
 </body>
 

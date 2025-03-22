@@ -5,87 +5,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modify Pokemon</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
-    <form action="/updatePokemon" method="post">
-        <div>
-            <label>id</label>
-            -
-        </div>
-        <div>
-            <label>name</label>
-            <input type="text" name="name" value="">
-        </div>
-        <div>
-            <label>weight</label>
-            <input type="text" name="weight" value="">
-        </div>
-        <div>
-            <label>height</label>
-            <input type="text" name="height" value="">
-        </div>
-        <div>
-            <label>hp</label>
-            <input type="text" name="hp" value="">
-        </div>
-        <div>
-            <label>attack</label>
-            <input type="text" name="attack" value="">
-        </div>
-        <div>
-            <label>defense</label>
-            <input type="text" name="defense" value="">
-        </div>
-        <div>
-            <label>Special Attack</label>
-            <input type="text" name="s_attack" value="">
-        </div>
-        <div>
-            <label>Special Defense</label>
-            <input type="text" name="s_defense" value="">
-        </div>
-        <div>
-            <label>speed</label>
-            <input type="text" name="speed" value="">
-        </div>
-        <div>
-            <label>Type 1</label>
-            <select name="type">
-                <option value="">Null</option>
-                <% pokemonTypes.forEach( function(type){ %>
-                    <option value="<%=type.type%>">
-                        <%=type.type %>
-                    </option>
-                    <% }) %>
-            </select>
+    <img src="/images/imgbin_pokemon-logo.png" class="logo" />
+    <form action="/updatePokemon" method="post" id="pokemonForm">
+        <div class="pokemon-contrainer">
+            <div class="pokemon-card2">
+                <img
+                    src="#" />
 
-        </div>
-        <div>
-            <label>Type 2</label>
-            <select name="type">
-                <option value="">Null</option>
-                <% pokemonTypes.forEach( function(type){ %>
-                    <option value="<%=type.type %>">
-                        <%=type.type %>
-                    </option>
-                    <% }) %>
-            </select>
-        </div>
-        <div>
-            <label>evo_group</label>
-            <input type="text" name="evo_set" value="">
-        </div>
-        <div>
-            <label>info</label>
-            <input type="text" name="info" value="">
-        </div>
-        <div>
-            <label>generation [number 1 - 9]</label>
-            <input type="text" name="generation" value="">
-        </div>
-        <div>
-            <input type="submit" value="Modify" />
+                <div style=" width: 80%; display: block; margin: 3rem auto 1rem; "><input type="text" name="name"
+                        value="" placeholder="Pokemon Name"></div>
+
+                <div style="    width: 80%;    display: block;    margin: 1rem auto 1rem;"> <label
+                        style="    text-align: left;    left: 0;    left: 0px;    margin: 0px;"> Description: </label>
+                    <br>
+                    <textarea name="info" style="width: 80%; height: 6rem;"></textarea>
+                </div>
+            </div>
+            <div class="pokemon-detail">
+                <div>
+                    <h3>Weight:</h3>
+                    <p>
+
+                        <input type="number" name="weight" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Height:</h3>
+                    <p>
+                        <input type="number" name="height" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>HP:</h3>
+                    <p>
+                        <input type="number" name="hp" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Attack:</h3>
+                    <p>
+                        <input type="number" name="attack" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Defense:</h3>
+                    <p>
+                        <input type="number" name="defense" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Special attack:</h3>
+                    <p>
+                        <input type="number" name="s_attack" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Special defense:</h3>
+                    <p>
+                        <input type="number" name="s_defense" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Speed:</h3>
+                    <p>
+                        <input type="number" name="speed" value="1" min="1" max="255">
+                    </p>
+                </div>
+                <div>
+                    <h3>Evo set:</h3>
+                    <p>
+                        <input type="number" name="evo_set" value="1" min="1" max="999">
+                    </p>
+                </div>
+                <div>
+                    <h3>Type</h3>
+                    <select name="type">
+                        <option value="">Null</option>
+                        <% pokemonTypes.forEach( function(type){ %>
+                            <option value="<%=type.type%>" >
+                                <%=type.type %>
+                            </option>
+                            <% }) %>
+                    </select>
+
+
+                    <select name="type">
+                        <option value="">Null</option>
+                        <% pokemonTypes.forEach( function(type){ %>
+                            <option value="<%=type.type %>" >
+                                <%=type.type %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <h3>Generation</h3>
+                    <p>
+                        <input type="number" name="generation" value="0" min="1" max="99">
+                    </p>
+
+                </div>
+                <div>
+                    <input type="submit" value="Create" />
+                </div>
+            </div>
+
         </div>
     </form>
 </body>
