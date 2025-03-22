@@ -14,8 +14,7 @@
         <input type="hidden" name="id" value="<%=pokemon.id%>">
         <div class="pokemon-contrainer">
             <div class="pokemon-card2">
-                <img
-                    src="images/PokemonImagesDB/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>/<%= pokemon.name[0].toUpperCase() %><%= pokemon.name.slice(1) %>_new.png" />
+                <img src="https://img.pokemondb.net/artwork/large/<%= pokemon.name %>.jpg" />
 
                 <div style=" width: 80%; display: block; margin: 3rem auto 1rem; "><input type="text" name="name"
                         value="<%=pokemon.name%>"></div>
