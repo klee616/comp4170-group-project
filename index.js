@@ -1,5 +1,7 @@
 import express from "express"
 import pokemonController from "./controllers/pokemonController.js";
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 const app = express()
 const port = process.env.PORT || 3000
