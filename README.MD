@@ -10,14 +10,14 @@
 
 
 ## Installation Guideline
-- Clone to local
+- Clone the Repository to local
 ```bash
 git clone https://github.com/klee616/comp4170-group-project.git
 ```
 
 - Setup .env.local file
-    - clone .env.sample to .env.local
-    - edit the PostgreSQL connection
+    - Copy .env.sample to .env.local
+    - Edit the PostgreSQL connection
 
 - Install dependent libraries
 ```bash
@@ -29,13 +29,12 @@ npm install
 npm run dev
 ```
 
-Now we can access the project via http://localhost:3000/ 
+Now we can access the project via http://localhost:3000/  or visit https://comp4170-group-project.vercel.app/
 
 
-
-## Resoruce 
+## Resource 
 The dataset and images are downloaded from www.kaggle.com
 - DataSet
 https://www.kaggle.com/datasets/rzgiza/pokdex-for-all-1025-pokemon-w-text-description 
-
 - Images
+the image catch from https://img.pokemondb.net 
