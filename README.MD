@@ -6,7 +6,7 @@
 ## Team Member & Role
 - Kam Shing Lee, A01329056
 - Gavin, 
-- Leslie, 
+- Leslie, A01317903 - styling, designing
 
 
 ## Installation Guideline
