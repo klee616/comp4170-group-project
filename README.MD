@@ -4,9 +4,9 @@
  - Guess Pokemon from the images.
 
 ## Team Member & Role
-- Kam Shing Lee, A01329056
-- Gavin, 
-- Leslie, A01317903 - styling, designing
+- Kam Shing Lee, A01329056 - Module, Database design, and query
+- Gavin, - controller, index page
+- Leslie, A01317903 - Views(EJS), styling, designing
 
 
 ## Installation Guideline
